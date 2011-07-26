@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data>
+
+
+    <record model="ir.actions.act_window" id="action_dimension_base_form">
+      <field name="name">Varianti Base</field>
+      <field name="res_model">product.variant.base.dimension</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <menuitem action="action_dimension_base_form" id="menu_varianti_base"  parent="product_variant_multi.menu_variant_dimension" sequence="4" icon="STOCK_JUSTIFY_FILL"  />
+    
+    <!-- Tree View  Numeri Progressivi Documenti -->
+    
+    <record id="varianti_base_view_tree" model="ir.ui.view">
+      <field name="name">varianti.base.tree</field>
+      <field name="model">product.variant.base.dimension</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="Tabella Varianti di Base">
+          <field name="name" select="1"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record id="varianti_base_view_form" model="ir.ui.view">
+      <field name="name">varianti_base.form</field>
+      <field name="model">product.variant.base.dimension</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Varinati di Base">
+          <group col="6" colspan="4">
+            <field name="name"/>
+          </group>     
+          <newline/>
+          <separator string="Dettaglio Varianti di base" colspan="4"/>
+          <field name="varianti_ids" nolabel="1" mode="tree,form" string="Varianti">
+            <tree editable="bottom"  string="Variante">
+              <field name="name" size='150' />
+            </tree>
+            <form>
+              <field name="name" size='150' />
+            </form>
+          </field>                    
+        </form>
+      </field>
+    </record>
+    
+    
+ 
+    
+    
+    <record model="ir.ui.view" id="button_base_variant">
+      <field name="name">generate.button</field>
+      <field name="model">product.variant.dimension.type</field>
+      <field name="inherit_id" ref="product_variant_multi.variant_type_form_view"/>
+      <field name="arch" type="xml">
+        <field name="sequence" position="after">
+          <button name="%(action_genera_varianti)d" type="action" icon="terp-stock_effects-object-colorize" string="Genera" help=" Carica Tabella Varianti Standard" />          
+  
+        </field>
+      </field>
+    </record>  
+    
+ 
+    <record model="ir.ui.view" id="button_base_variant_template">
+      <field name="name">generate.button.template</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product_variant_multi.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <field name="allow_custom_value" position="after">
+          <button name="%(action_genera_varianti)d" type="action" icon="terp-stock_effects-object-colorize" string="Genera" help=" Carica Tabella Varianti Standard" />          
+          
+        </field>
+      </field>
+    </record>          
+        
+    
+    
+    </data>
+</openerp>
