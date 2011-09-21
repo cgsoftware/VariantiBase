@@ -39,10 +39,10 @@ Finally, this module is better used along with the product_variant_configurator 
 will help the salesman selecting the appropriate variant in the sale order line
 using dimension criteria instead of having to crawl the full space of variants.
     """,
-    "depends" : ["base", "product", "product_variant_multi"],
+    "depends" : ["base", "product","product_variant_multi"],
     "init_xml" : [],
     "demo_xml" : [],
-    "update_xml" : ["bom_variant_view.xml", "security/ir.model.access.csv"],
+    "update_xml" : ["wizard/generarighe.xml","product_basevariant_view.xml",'security/ir.model.access.csv'],
     "active": False,
     "installable": True
 }
